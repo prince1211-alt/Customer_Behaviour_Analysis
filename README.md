@@ -426,32 +426,4 @@ Customer-Shopping-Behaviour-Dashboard/
 
 ---
 
-## 15. Interview Summary
-
-**How to explain this project in about 60 seconds:**
-
-> "I built a four-page Power BI dashboard on 3,900 customer purchases stored in SQL Server.
->
-> I created 21 DAX measures, covering revenue, average order value, subscription rate and discount usage.
->
-> The main finding is that revenue is concentrated in Clothing, which brings in about 45%.
->
-> Neither subscriptions nor discounts increase order value. Average order value is about 60 in all cases.
->
-> So I'd recommend redesigning the subscription offer and targeting discounts more carefully.
->
-> I also cleaned up the report. I removed duplicate and placeholder measures, fixed mislabelled visuals, and only built KPIs that the data can actually support."
-
-**Likely interview questions:**
-
-| Question | Short answer |
-|---|---|
-| Why use `DIVIDE` instead of `/`? | It handles divide-by-zero safely and returns blank instead of an error. |
-| Why `ALLSELECTED` in % of Total? | So the percentage respects the user's slicer selections. |
-| Why are there no profit KPIs? | The data has no cost column, so a profit figure would be invented. |
-| What was the biggest challenge? | Duplicate measure names stopped visuals from loading, so I kept one definition per KPI. |
-| What would you add next? | Order dates for trend analysis, cost data for profit, and quantity for units sold. |
-
----
-
 *Built with Power BI Desktop · Data: `customer_data` (3,900 rows)*
