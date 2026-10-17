@@ -13,7 +13,7 @@ A 4-page Power BI dashboard that analyses **3,900 customer purchases**. It cover
 6. [Data Model](#6-data-model)
 7. [DAX Measures](#7-dax-measures)
 8. [Dashboard Pages](#8-dashboard-pages)
-9. [Key Insights](#9-key-insights)
+9. [Key Insights & Charts](#9-key-insights--charts)
 10. [Recommendations](#10-recommendations)
 11. [Data Limitations](#11-data-limitations)
 12. [Fixes & Improvements Made](#12-fixes--improvements-made)
@@ -32,6 +32,12 @@ A 4-page Power BI dashboard that analyses **3,900 customer purchases**. It cover
 | **Output** | 4-page Power BI report with 24 KPI cards, 11 bar/column charts, 2 donut charts, 3 tables and 4 synced slicers |
 | **Total Revenue** | 233,081 |
 | **Avg Order Value** | 59.76 |
+
+### 📊 Headline KPIs
+
+| 💰 Total Revenue | 🛒 Total Orders | 👥 Customers | 🧾 Avg Order Value | ⭐ Avg Rating | 🔁 Subscription Rate | 🏷️ Discount Usage |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **233,081** | **3,900** | **3,900** | **59.76** | **3.75 / 5** | **27.0%** | **43.0%** |
 
 ---
 
@@ -212,9 +218,9 @@ Every page has the same layout:
 
 ---
 
-## 9. Key Insights
+## 9. Key Insights & Charts
 
-All figures are for the full dataset with no filters applied.
+All figures are for the full dataset with no filters applied. The charts below are drawn by GitHub directly from the README text (Mermaid), so no image files are needed. Each label shows the exact value.
 
 ### Headline KPIs
 | KPI | Value |
@@ -232,10 +238,64 @@ All figures are for the full dataset with no filters applied.
 - **Seasons are balanced.** Fall is highest (60,018) and Summer is lowest (55,777), a gap of only about 8%.
 - **Top states:** Montana (5,784), Illinois (5,617) and California (5,605).
 
+```mermaid
+xychart-beta horizontal
+    title "Revenue by Category"
+    x-axis ["Clothing (104,264, 44.7%)", "Accessories (74,200, 31.8%)", "Footwear (36,093, 15.5%)", "Outerwear (18,524, 7.9%)"]
+    y-axis "Revenue" 0 --> 120000
+    bar [104264, 74200, 36093, 18524]
+```
+
+```mermaid
+xychart-beta horizontal
+    title "Top 10 Items by Revenue"
+    x-axis ["Blouse (10,410)", "Shirt (10,332)", "Dress (10,320)", "Pants (10,090)", "Jewelry (10,010)", "Sunglasses (9,649)", "Belt (9,635)", "Scarf (9,561)", "Sweater (9,462)", "Shorts (9,433)"]
+    y-axis "Revenue" 0 --> 12000
+    bar [10410, 10332, 10320, 10090, 10010, 9649, 9635, 9561, 9462, 9433]
+```
+
+```mermaid
+xychart-beta
+    title "Revenue by Season"
+    x-axis ["Spring (58,679)", "Summer (55,777)", "Fall (60,018)", "Winter (58,607)"]
+    y-axis "Revenue" 0 --> 69000
+    bar [58679, 55777, 60018, 58607]
+```
+
+```mermaid
+xychart-beta horizontal
+    title "Top 10 States by Revenue"
+    x-axis ["Montana (5,784)", "Illinois (5,617)", "California (5,605)", "Idaho (5,587)", "Nevada (5,514)", "Alabama (5,261)", "New York (5,257)", "North Dakota (5,220)", "West Virginia (5,174)", "Nebraska (5,172)"]
+    y-axis "Revenue" 0 --> 6700
+    bar [5784, 5617, 5605, 5587, 5514, 5261, 5257, 5220, 5174, 5172]
+```
+
 ### Customers
 - **Male customers bring in 67.7% of revenue** (157,890 from 2,652 customers).
 - **Age groups are evenly spread.** Young Adults are the largest group (1,028 customers, 62,143 revenue).
 - **Purchase frequency is evenly spread** across all 7 groups (539–584 customers each).
+
+```mermaid
+pie showData title Revenue by Gender
+    "Male" : 157890
+    "Female" : 75191
+```
+
+```mermaid
+xychart-beta
+    title "Customers by Age Group"
+    x-axis ["Young Adult (1,028)", "Adult (942)", "Middle-aged (986)", "Senior (944)"]
+    y-axis "Customers" 0 --> 1200
+    bar [1028, 942, 986, 944]
+```
+
+```mermaid
+xychart-beta horizontal
+    title "Customers by Purchase Frequency"
+    x-axis ["Every 3 Months (584)", "Annually (572)", "Quarterly (563)", "Monthly (553)", "Bi-Weekly (547)", "Fortnightly (542)", "Weekly (539)"]
+    y-axis "Customers" 0 --> 670
+    bar [584, 572, 563, 553, 547, 542, 539]
+```
 
 ### Subscriptions
 - **27.0%** of customers subscribe, and they bring in **26.9%** of revenue (62,645).
@@ -246,9 +306,47 @@ All figures are for the full dataset with no filters applied.
 - **Discounts do not raise order value.** AOV with a discount is **59.28**, slightly lower than **60.13** without one.
 - Discount usage is similar in every category (42–44%) and season (41–44%).
 
+```mermaid
+pie showData title Customers by Subscription Status
+    "Non-subscriber" : 2847
+    "Subscriber" : 1053
+```
+
+```mermaid
+xychart-beta
+    title "Avg Order Value: Subscription and Discount"
+    x-axis ["Subscriber (59.49)", "Non-subscriber (59.87)", "With discount (59.28)", "Without discount (60.13)"]
+    y-axis "Avg Order Value" 0 --> 70
+    bar [59.49, 59.87, 59.28, 60.13]
+```
+
+```mermaid
+xychart-beta
+    title "Discount Usage % by Category"
+    x-axis ["Clothing (42.1%)", "Accessories (43.8%)", "Footwear (43.2%)", "Outerwear (44.4%)"]
+    y-axis "Discount usage (%)" 0 --> 52
+    bar [42.1, 43.8, 43.2, 44.4]
+```
+
 ### Payment & Shipping
 - All **6 payment methods** and **6 shipping types** are used about equally (about 15–17% each).
 - Ratings barely change by shipping type (3.71–3.82).
+
+```mermaid
+xychart-beta horizontal
+    title "Orders by Payment Method"
+    x-axis ["PayPal (677, 17.4%)", "Credit Card (671, 17.2%)", "Cash (670, 17.2%)", "Debit Card (636, 16.3%)", "Venmo (634, 16.3%)", "Bank Transfer (612, 15.7%)"]
+    y-axis "Orders" 0 --> 780
+    bar [677, 671, 670, 636, 634, 612]
+```
+
+```mermaid
+xychart-beta horizontal
+    title "Orders by Shipping Type"
+    x-axis ["Free Shipping (675, 17.3%)", "Standard (654, 16.8%)", "Store Pickup (650, 16.7%)", "Next Day Air (648, 16.6%)", "Express (646, 16.6%)", "2-Day Shipping (627, 16.1%)"]
+    y-axis "Orders" 0 --> 780
+    bar [675, 654, 650, 648, 646, 627]
+```
 
 ---
 
@@ -323,7 +421,7 @@ Customer-Shopping-Behaviour-Dashboard/
     └── 4_discounts_shipping.png
 ```
 
-> **Tip:** On GitHub, show screenshots in this README with
+> **Tip:** Add Power BI page screenshots to this README with
 > `![Executive Overview](screenshots/1_executive_overview.png)`
 
 ---
@@ -357,5 +455,3 @@ Customer-Shopping-Behaviour-Dashboard/
 ---
 
 *Built with Power BI Desktop · Data: `customer_data` (3,900 rows)*
-#   C u s t o m e r _ B e h a v i o u r _ A n a l y s i s  
- 
